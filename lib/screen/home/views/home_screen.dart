@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:expense_tracker/screen/home/views/main_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(),
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
         child: BottomNavigationBar(
@@ -31,14 +34,16 @@ class HomeScreen extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(colors: [
-                  Theme.of(context).colorScheme.primary,
-                  Theme.of(context).colorScheme.secondary,
-                  Theme.of(context).colorScheme.tertiary,
-                ])),
+              shape: BoxShape.circle,
+              gradient: LinearGradient(colors: [
+                Theme.of(context).colorScheme.primary,
+                Theme.of(context).colorScheme.secondary,
+                Theme.of(context).colorScheme.tertiary,
+              ], transform: const GradientRotation(pi / 4)),
+            ),
             child: const Icon(CupertinoIcons.add)),
       ),
+      body: const MainScreen(),
     );
   }
 }
