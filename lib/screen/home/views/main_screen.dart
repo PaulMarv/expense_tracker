@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:expense_tracker/data/data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -235,7 +236,7 @@ class MainScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 3,
+                itemCount: transactionsData.length,
                 itemBuilder: (context, int index) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
@@ -247,16 +248,59 @@ class MainScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: const BoxDecoration(
-                                  color: Colors.yellow, shape: BoxShape.circle),
+                            Row(
+                              children: [
+                                Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Container(
+                                      width: 50,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                          color: transactionsData[index]
+                                              ['color'],
+                                          shape: BoxShape.circle),
+                                    ),
+                                    transactionsData[index]['icon'],
+                                  ],
+                                ),
+                                const SizedBox(
+                                  width: 12,
+                                ),
+                                Text(
+                                  transactionsData[index]['name'],
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
                             ),
-                            SizedBox(width: 12,),
-                            Text(
-                              'Food'
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  transactionsData[index]['totalAmount'],
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Text(
+                                  transactionsData[index]['date'],
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color:
+                                          Theme.of(context).colorScheme.outline,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ],
                             )
                           ],
                         ),
