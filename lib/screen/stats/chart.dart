@@ -137,17 +137,17 @@ class _MyChartState extends State<MyChart> {
     const style = TextStyle(
         color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 14);
     String text;
-    if (value == 0) {
+    if (value == 1) {
       text = '\$1k';
-    } else if (value == 1) {
-      text = '\$2k';
     } else if (value == 2) {
-      text = '\$3k';
+      text = '\$2k';
     } else if (value == 3) {
+      text = '\$3k';
+    } else if (value == 4) {
       text = '\$4k';
-    } else if (value == 4) {
+    } else if (value == 5) {
       text = '\$5k';
-    } else if (value == 4) {
+    } else if (value == 6) {
       text = '\$6k';
     } else {
       return Container();
