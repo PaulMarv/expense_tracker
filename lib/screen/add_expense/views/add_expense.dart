@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AddExpense extends StatelessWidget {
@@ -23,6 +22,9 @@ class AddExpense extends StatelessWidget {
                 'Add Expenses',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
               ),
+              const SizedBox(
+                height: 16,
+              ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: TextFormField(
@@ -35,6 +37,7 @@ class AddExpense extends StatelessWidget {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide.none
                     ),
                   ),
                 ),
