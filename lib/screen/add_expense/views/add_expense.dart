@@ -25,6 +25,7 @@ class _AddExpenseState extends State<AddExpense> {
     'tech',
     'travel'
   ];
+  String iconSelected = '';
 
   @override
   void initState() {
@@ -169,23 +170,50 @@ class _AddExpenseState extends State<AddExpense> {
                                                 bottom: Radius.circular(12),
                                               ),
                                             ),
-                                            child: GridView.builder(
-                                              gridDelegate:
-                                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                                      crossAxisCount: 3),
-                                              itemCount:
-                                                  myCategoriesIcon.length,
-                                              itemBuilder: (context, int i) {
-                                                return Container(
-                                                  width: 50,
-                                                  height: 50,
-                                                  decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/${myCategoriesIcon[i]}.png'),
-                                                  )),
-                                                );
-                                              },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: GridView.builder(
+                                                gridDelegate:
+                                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 3,
+                                                  crossAxisSpacing: 5,
+                                                  mainAxisSpacing: 5,
+                                                ),
+                                                itemCount:
+                                                    myCategoriesIcon.length,
+                                                itemBuilder: (context, int i) {
+                                                  return GestureDetector(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        iconSelected =
+                                                            myCategoriesIcon[i];
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      width: 50,
+                                                      height: 50,
+                                                      decoration: BoxDecoration(
+                                                          border: Border.all(
+                                                              color: iconSelected ==
+                                                                      myCategoriesIcon[
+                                                                          i]
+                                                                  ? Colors.blue
+                                                                      .shade100
+                                                                  : Colors
+                                                                      .grey),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(12),
+                                                          image:
+                                                              DecorationImage(
+                                                            image: AssetImage(
+                                                                'assets/${myCategoriesIcon[i]}.png'),
+                                                          )),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
                                             ),
                                           )
                                         : Container(),
