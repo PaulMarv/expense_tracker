@@ -96,7 +96,8 @@ class _AddExpenseState extends State<AddExpense> {
                         context: context,
                         builder: (context) {
                           String iconSelected = '';
-                          Color categoryColor = Colors.white;
+                          Color categoryColor = const Color(0xFFFFFFFF);
+                          // Color pickerColor = const Color(0xFFFFFFFF);
                           bool isExpanded = false;
                           return StatefulBuilder(builder: (context, setState) {
                             return AlertDialog(
@@ -289,6 +290,9 @@ class _AddExpenseState extends State<AddExpense> {
                                                 BorderRadius.circular(12),
                                             borderSide: BorderSide.none),
                                       ),
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
                                     ),
                                     SizedBox(
                                       width: double.infinity,
